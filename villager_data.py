@@ -36,10 +36,19 @@ def get_villagers_by_species(filename, search_string="All"):
     """
 
     villagers = []
+    file = open(filename)
 
-    # TODO: replace this with your code
+    for line in file:
+        if search_string == "All":
+            villagers.append(line.rstrip().split("|")[0])
+        elif line.rstrip().split("|")[1] == search_string:
+            villagers.append(line.rstrip().split("|")[0])
+    file.close()
 
     return sorted(villagers)
+
+
+get_villagers_by_species("villagers.csv", "Anteater")
 
 
 def all_names_by_hobby(filename):
