@@ -4,18 +4,24 @@
 def all_species(filename):
     """Return a set of unique species in the given file.
 
-    Arguments:
-        - filename (str): the path to a data file
-
     Return:
         - set[str]: a set of strings
     """
+    unique_species = []
+    file = open(filename)
+    for line in file:
+        species = line.rstrip().split("|")[1]
+        unique_species.append(species)
+        print()
+    unique_species = set(unique_species)
 
-    species = set()
+    print(unique_species)
+    file.close()
 
-    # TODO: replace this with your code
+    return unique_species
 
-    return species
+
+all_species("villagers.csv")
 
 
 def get_villagers_by_species(filename, search_string="All"):
@@ -94,7 +100,7 @@ def find_likeminded_villagers(filename, villager_name):
     Arguments:
         - filename (str): the path to a data file
         - villager_name (str): a villager's name
-    
+
     Return:
         - set[str]: a set of names
 
